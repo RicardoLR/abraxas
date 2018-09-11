@@ -1,0 +1,13 @@
+{
+  "save": "guardar",
+  "Tasks":{
+    "newTask": "Crear nueva tarea",
+    "deleteTask": "Borrar tarea",
+    "updateTask": "Actualizar tarea",
+    "nameTask": "Nombre de la tarea",
+    "detailTask": "Detalle de la tarea",
+    "editHour": "Editar hora",
+    "timeTask": "Tiempo de tarea",
+    "countHour": "Seleccionar horas requeridas"
+  }
+}

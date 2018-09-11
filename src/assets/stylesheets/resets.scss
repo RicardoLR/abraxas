@@ -1,0 +1,116 @@
+@font-face {
+	font-family: "Montserrat";
+	src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../fonts/Montserrat-Medium.ttf") format("truetype");
+	font-style: bold;
+}
+
+html, body {
+	font-family: "Montserrat";
+	min-height: 100%;
+	margin: 0;
+}
+
+a {
+	color: $color-main;
+}
+
+hr {
+	border-top: 1px solid $color-dark-gray;
+	margin: 20px 0 40px;
+}
+
+legend {
+	width: auto;
+	font-size: 18px!important;
+}
+
+h1 {
+	font-size: 29px;
+	font-style: normal;
+	margin: 32px 0 40px;
+}
+
+h2 {
+	font-size: 20px;
+	font-style: normal;
+	margin: 0 0 32px;
+}
+
+header {
+	background-color: #ededed;
+	padding: 20px;
+}
+
+.table > tbody > tr > td {
+	outline-width: 0;
+	outline-color: transparent;
+}
+
+.table > thead > tr > th { 
+	font-size: 14px;
+}
+
+#formCriterios > .table > thead > tr > td > div {
+	top: -7px; 
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.space-tree-buttons > div:nth-child(2){
+	padding-right: 0px;
+}
+
+.fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fa-2x { font-size: 2em; }
+.fa-3x { font-size: 3em; }
+.fa-4x { font-size: 4em; }
+
+.gr {
+	color: green;
+}
+
+.rd {
+	color: red;
+}
+
+.or {
+	color: orange;
+}
+
+.clearfix {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.textOverflow{
+	word-wrap: break-word;
+    width: 400px;
+}
