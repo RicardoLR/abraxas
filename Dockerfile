@@ -5,7 +5,6 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN mkdir /usr/src/app/public
-RUN npm run build
 
 RUN npm install
 
@@ -13,8 +12,10 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-#CMD [ "npm", "run", "build" ]
-CMD [ "npm", "start" ]
+#CMD [ "npm", "run build"]
+#CMD [ "npm", "start" ]
+CMD ["npm","run", "prepare"]
+
 # docker build --no-cache -t richi/abraxas .
 # docker run -e APP=Abraxas -e PORT=8080 -e BACKEND_SERVER=http://localhost:8080 -e NODE_ENV=production -it -p 8080:8080 -d richi/abraxas
 
