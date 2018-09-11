@@ -71,19 +71,29 @@ class NewTasks extends Component {
     onSave(){
         let form = this.state.form
 
-        if( form.tiempoTareaId ){
-            if( !form.tiempoTareaId.includes(":") )
-                this.props.createModal(Utils.warningMessage("Formato correcto, ej maximo: 119:59"))
-            else{
-                let horaMinutos = form.tiempoTareaId.split(":");
-                if( parseInt(horaMinutos[0]) >= 120 && parseInt(horaMinutos[1]) >= 60 )
-                    this.props.createModal(Utils.warningMessage("Error debe ser menor a 2 horas, ej: 119:59")) 
-                else            
-                    this.saveTask(form)
-            }
+        if( !form.nombreTarea || !form.nombreTarea ){
+            this.setState({validate: false})
+        }else if( (form.selectHourId === 3 && !form.countHourId) || (form.selectHourId === 4 && !form.tiempoTareaId) ){
+            this.setState({validateCustom: false})
+        }else{
 
-        }else
-            this.saveTask(form)
+            if( form.selectHourId === 4 && form.tiempoTareaId  ){
+                if( !form.tiempoTareaId.includes(":") )
+                    this.props.createModal(Utils.warningMessage("Formato correcto, ej maximo: 119:59"))
+                else{
+                    let horaMinutos = form.tiempoTareaId.split(":");
+                    if( parseInt(horaMinutos[0]) >= 120 && parseInt(horaMinutos[1]) >= 60 )
+                        this.props.createModal(Utils.warningMessage("Error debe ser menor a 2 horas, ej: 119:59")) 
+                    else            
+                        this.saveTask(form)
+                }
+    
+            }else
+                this.saveTask(form)
+
+        }
+
+
         
     }
 
@@ -248,6 +258,7 @@ class NewTasks extends Component {
                                     {id:5, valor:5, minutes: "300:00"}
                                 ]
                             }
+                            required
                             onChange={(v)=>{this.handleSelect(v,'countHourId')}} />
                     </Col>
 

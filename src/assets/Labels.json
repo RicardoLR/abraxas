@@ -6,7 +6,7 @@
     "updateTask": "Actualizar tarea",
     "nameTask": "Nombre de la tarea",
     "detailTask": "Detalle de la tarea",
-    "editHour": "Editar hora",
+    "editHour": "Personaliar Minutos:Segundos",
     "timeTask": "Tiempo de tarea",
     "countHour": "Seleccionar horas requeridas"
   }
