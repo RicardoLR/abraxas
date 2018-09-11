@@ -31,9 +31,6 @@ export const closeModal = () => {
 }
 
 export const createModal = (config) => {
-
-	console.log("createModal")
-
 	let content = {
 		title: config.title||'',
 		body: config.body||'',

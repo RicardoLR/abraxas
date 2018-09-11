@@ -21,10 +21,7 @@ class NewTasks extends Component {
     handleSelect (obj, element) {
 
         this.setState({form: {...this.state.form, [element]: obj.value} }, ()=>{
-
-            console.log(this.state)
             let form = this.state.form
-
             if( (form.selectHourId === 3 && form.countHourId || form.selectHourId === 4 && form.tiempoTareaId) )
                 this.setState({ validateCustom: false })
 
@@ -93,8 +90,6 @@ class NewTasks extends Component {
 
     saveTask(form){
 
-        console.log("saveTask", form)
-
         let tiempo = form.selectHourId === 3 ? String(parseInt(form.countHourId)*60)+":00" : form.selectHourId === 4 ? form.tiempoTareaId : this.getTime(form.selectHourId)
 
         this.props.modifyTask({
@@ -120,7 +115,6 @@ class NewTasks extends Component {
                     tareasBD = Object.assign({}, res);
                 }
                 tareasBD.tareas.push(data)
-                console.log(tareasBD)
 
                 this.props.setLocalStorage(tareasBD).then( r=>{
                     this.props.cerrarpopup(r)
@@ -166,8 +160,6 @@ class NewTasks extends Component {
                     ...this.props.form, 
                     ...this.props.data,
                 }
-            }, ()=>{
-                console.log(this.state)
             })
         }
     }
