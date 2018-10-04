@@ -13,9 +13,6 @@ app.use(cors())
 
 const HOST = '0.0.0.0';
 
-
-//app.use(express.static(path.join(__dirname, '..', 'public')))
-
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
 app.get('/app', function (req, res) {
