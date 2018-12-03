@@ -286,6 +286,7 @@ class App extends Component {
 			<div>
 				
 				{"TESTING"}
+
 				<Tasks 
 					form={this.state.form}
 					tareas={this.state.form.tareas}
@@ -304,6 +305,9 @@ class App extends Component {
 				 />
 
 				 <Grafica data={this.state.form.tareas} color={'blue'}  />
+
+				{"TESTING RICHI"}
+
 
 			</div>
 		)
