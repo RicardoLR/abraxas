@@ -1,6 +1,6 @@
-node {
-  try {
-    stage('Checkout') {
+pipeline {
+  stages {
+    stage('HelloWorld') {
       checkout scm
     }
     stage('Environment') {
@@ -15,8 +15,5 @@ node {
         sh 'docker rmi -f react-app localhost:8081/react-app'
       }
     }
-  }
-  catch (err) {
-    throw err
   }
 }
