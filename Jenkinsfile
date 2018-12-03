@@ -1,5 +1,4 @@
-pipeline {
-  stages {
+node{
     stage('HelloWorld') {
       checkout scm
     }
@@ -15,5 +14,4 @@ pipeline {
         sh 'docker rmi -f react-app localhost:8081/react-app'
       }
     }
-  }
 }
