@@ -10,10 +10,8 @@ node{
     }
     stage('Deploy'){
       if(env.BRANCH_NAME == 'master'){
-        sh 'docker build -t react-app --no-cache .'
-        sh 'docker tag react-app localhost:5000/react-app'
-        sh 'docker push localhost:5000/react-app'
-        sh 'docker rmi -f react-app localhost:5000/react-app'
+        sh 'docker build --no-cache -t richi/abraxas .'
+        sh 'docker run -e APP=Abraxas -e PORT=8081 -e BACKEND_SERVER=http://localhost:8081 -e NODE_ENV=production -it -p 8081:8081 -d richi/abraxas'
       }
     }
 }
