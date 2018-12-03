@@ -284,7 +284,8 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-
+				
+				{"TESTING"}
 				<Tasks 
 					form={this.state.form}
 					tareas={this.state.form.tareas}
