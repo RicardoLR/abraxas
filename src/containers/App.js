@@ -284,7 +284,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-
+				{"MASTER"}
 				<Tasks 
 					form={this.state.form}
 					tareas={this.state.form.tareas}
@@ -303,6 +303,8 @@ class App extends Component {
 				 />
 
 				 <Grafica data={this.state.form.tareas} color={'blue'}  />
+
+				{"MASTER"}
 
 			</div>
 		)
