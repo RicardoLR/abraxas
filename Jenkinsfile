@@ -44,11 +44,11 @@ node{
       }
       echo "HASH_GIT: ${HASH_GIT}"
 
-      // script {
-      //       RAMA_GIT = sh (script: "git log --pretty=oneline \$HASH_GIT | grep \$HASH_GIT | awk '{ print \$2 }'", returnStdout: true)
-      // }
+      script {
+            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }'", returnStdout: true)
+      }
 
-      sh "RAMA_GIT=git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }'"
+      // sh "RAMA_GIT=git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }'"
 
       echo "RAMA_GIT: ${RAMA_GIT}"
       if(RAMA_GIT == 'WEB_BUILD'){
