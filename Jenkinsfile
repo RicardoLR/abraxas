@@ -29,6 +29,7 @@ node{
       echo "============================================================"
 
 
+      // Procoeso con un archivo de text
       script {
             RAMA_CUSTOM = sh (script: "cat ./ambiente/ambiente.txt", returnStdout: true)
       }
@@ -39,6 +40,8 @@ node{
         echo "no es RAMA_CUSTOM... "
       }
 
+
+      // Procoeso de un commit
 
       script {
             HASH_GIT = sh (script: "git rev-parse HEAD", returnStdout: true)
