@@ -40,7 +40,7 @@ node{
 
       script {
             HASH_GIT = sh (script: "git rev-parse HEAD", returnStdout: true)
-            RAMA_CUSTOM = sh (script: "git log --pretty=oneline ${HASH_GIT} | grep "${hash}" | awk '{ print $2 }'", returnStdout: true)
+            RAMA_CUSTOM = sh (script: "git log --pretty=oneline ${HASH_GIT} | grep ${HASH_GIT} | awk '{ print $2 }'", returnStdout: true)
       }
       echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
       if(RAMA_CUSTOM == 'WEB_BUILD'){
