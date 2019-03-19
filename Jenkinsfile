@@ -60,6 +60,11 @@ node{
       }
 
       
+      if(RAMA_GIT == "PR_WEB" ){
+        echo "RAMA_GIT procesando PR_WEB... "
+      }else{
+        echo "no es RAMA_GIT PR_WEB... "
+      }
 
  
 
