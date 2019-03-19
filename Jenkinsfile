@@ -26,7 +26,7 @@ node{
       echo "============================================================"
 
       script {
-            foo = sh (script: "$( cat ./ambiente/ambiente.txt )", returnStdout: true)
+            RAMA_CUSTOM = sh (script: "cat ./ambiente/ambiente.txt", returnStdout: true)
       }
 
       echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
