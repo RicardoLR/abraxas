@@ -23,7 +23,8 @@ node{
 
       echo "============================================================"
 
-      
+      def RAMA_CUSTOM=''
+
       sh 'RAMA_CUSTOM=$( cat ./ambiente/ambiente.txt )'
       echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
       if(RAMA_CUSTOM == 'WEB'){
