@@ -67,10 +67,15 @@ node{
       // sh "RAMA_GIT=\$(git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }')"
 
     def command = '''
-      git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{print \$2}'
-    '''
-         
-        sh "echo ${command}"
+      git log --pretty=oneline \${HASH_GIT}'
+    '''     
+    sh "echo ${command}"
+
+
+    def command2 = '''
+      git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT}'
+    '''     
+    sh "echo ${command2}"
 
 
       echo "RAMA_GIT: ${RAMA_GIT}"
