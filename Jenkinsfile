@@ -4,6 +4,8 @@ node{
     env.GIT_TAG_NAME = gitTagName()
     env.GIT_TAG_MESSAGE = gitTagMessage()
 
+    RAMA_CUSTOM = 'initial_value'
+
     stage('HelloWorld') {
       checkout scm
     }
@@ -23,9 +25,10 @@ node{
 
       echo "============================================================"
 
-      def RAMA_CUSTOM=''
+      script {
+            foo = sh (script: "$( cat ./ambiente/ambiente.txt )", returnStdout: true)
+      }
 
-      sh '$RAMA_CUSTOM=$( cat ./ambiente/ambiente.txt )'
       echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
       if(RAMA_CUSTOM == 'WEB'){
         echo "RAMA_CUSTOM procesando... "
