@@ -17,6 +17,19 @@ node{
       echo "env: ${env}"
       echo "============================================================"
       
+      echo sh(returnStdout: true, script: 'env')
+      echo "============================================================"
+      echo sh(script: 'env|sort', returnStdout: true)
+
+      echo "============================================================"
+
+      for(e in env){
+        echo e + " is " + ${e}
+      }
+
+      echo "============================================================"
+
+
       def tag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
       echo "tag: ${tag}"
 
