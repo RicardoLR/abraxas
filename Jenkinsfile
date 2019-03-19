@@ -46,6 +46,8 @@ node{
 
       script {
             RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT}", returnStdout: true)
+            RAMA_GIT = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
+            RAMA_GIT = sh (script: "\${RAMA_GIT} | awk '{ print \$2 }'", returnStdout: true)
       }
 
       // sh "RAMA_GIT=git log --pretty=oneline \${HASH_GIT}"
