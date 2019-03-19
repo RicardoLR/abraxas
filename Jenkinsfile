@@ -6,6 +6,7 @@ node{
 
     RAMA_CUSTOM = 'initial_value'
     RAMA_GIT = 'initial_value'
+    RAMA_GIT2 = 'initial_value'
     HASH_GIT = 'initial_value'
 
     stage('HelloWorld') {
@@ -50,9 +51,9 @@ node{
       echo "RAMA_GIT: ${RAMA_GIT}"
 
       script {
-            RAMA_GIT = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
+            RAMA_GIT2 = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
       }
-      echo "RAMA_GIT: ${RAMA_GIT}"
+      echo "RAMA_GIT2: ${RAMA_GIT2}"
 
 
       script {
