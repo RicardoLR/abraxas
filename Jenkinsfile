@@ -11,9 +11,16 @@ node{
       sh 'git --version'
       echo "============================================================"
       echo "Branch: ${env.BRANCH_NAME}"
-      echo "Branch: ${env.GIT_TAG_NAME}"
-      echo "Branch: ${env.GIT_TAG_MESSAGE}"
+      echo "GIT_TAG_NAME: ${env.GIT_TAG_NAME}"
+      echo "GIT_TAG_MESSAGE: ${env.GIT_TAG_MESSAGE}"
+      echo "CHANGE_TITLE: ${env.CHANGE_TITLE}"
+      echo "env: ${env}"
       echo "============================================================"
+      
+      def tag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+      echo "tag: ${tag}"
+
+
       sh 'docker -v'
       sh 'printenv'
     }
