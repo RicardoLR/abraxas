@@ -23,16 +23,15 @@ node{
 
       echo "============================================================"
 
-      for(e in env){
-        echo e + " is " + ${e}
+      
+      sh 'RAMA_CUSTOM=$( cat ./ambiente/ambiente.txt )'
+      echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
+      if(RAMA_CUSTOM == 'WEB'){
+        echo "RAMA_CUSTOM procesando... "
+      }else{
+        echo "no es RAMA_CUSTOM... "
       }
-
-      echo "============================================================"
-
-
-      def tag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
-      echo "tag: ${tag}"
-
+ 
 
       sh 'docker -v'
       sh 'printenv'
