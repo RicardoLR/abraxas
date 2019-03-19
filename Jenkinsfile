@@ -25,10 +25,10 @@ node{
 
       echo "============================================================"
 
+
       script {
             RAMA_CUSTOM = sh (script: "cat ./ambiente/ambiente.txt", returnStdout: true)
       }
-
       echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
       if(RAMA_CUSTOM == 'WEB'){
         echo "RAMA_CUSTOM procesando... "
