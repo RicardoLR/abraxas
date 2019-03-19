@@ -45,26 +45,33 @@ node{
       }
       echo "HASH_GIT: ${HASH_GIT}"
 
-      script {
-            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT}", returnStdout: true)
-      }
-      echo "RAMA_GIT: ${RAMA_GIT}"
+      // script {
+      //       RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT}", returnStdout: true)
+      // }
+      // echo "RAMA_GIT: ${RAMA_GIT}"
 
-      script {
-            RAMA_GIT2 = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
-      }
-      echo "RAMA_GIT2: ${RAMA_GIT2}"
+      // script {
+      //       RAMA_GIT2 = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
+      // }
+      // echo "RAMA_GIT2: ${RAMA_GIT2}"
 
 
-      script {
-            RAMA_GIT = sh (script: "\${RAMA_GIT} | awk '{ print \$2 }'", returnStdout: true)
-      }
-      echo "RAMA_GIT: ${RAMA_GIT}"
+      // script {
+      //       RAMA_GIT = sh (script: "\${RAMA_GIT} | awk '{ print \$2 }'", returnStdout: true)
+      // }
+      // echo "RAMA_GIT: ${RAMA_GIT}"
 
       // sh "RAMA_GIT=git log --pretty=oneline \${HASH_GIT}"
       // sh "RAMA_GIT=grep \${HASH_GIT}"
       // sh "RAMA_GIT=awk '{ print \$2 }'"
       // sh "RAMA_GIT=\$(git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }')"
+
+    def command = '''
+        \$(git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }')
+    '''
+         
+        sh "echo ${command}"
+
 
       echo "RAMA_GIT: ${RAMA_GIT}"
       if(RAMA_GIT == 'WEB_BUILD'){
