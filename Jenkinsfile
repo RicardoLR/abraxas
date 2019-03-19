@@ -44,9 +44,9 @@ node{
             HASH_GIT = sh (script: "git rev-parse HEAD", returnStdout: true)
       }
       echo "HASH_GIT: ${HASH_GIT}"
-
+      
       script {
-            RAMA_GIT = sh (script: "git log --pretty=oneline ${HASH_GIT} | head -n 1 | awk '{ print \$2 }'", returnStdout: true)
+            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT} | head -n 1 | awk '{ print \$2 }'", returnStdout: true)
       }
       echo "RAMA_GIT: ${RAMA_GIT}"
 
