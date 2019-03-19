@@ -46,7 +46,7 @@ node{
       echo "HASH_GIT: ${HASH_GIT}"
 
       script {
-            RAMA_GIT = sh (script: "git log --pretty=oneline ${HASH_GIT} | grep ${HASH_GIT} | awk '{ print $2 }'", returnStdout: true)
+            RAMA_GIT = sh (script: "git log --pretty=oneline ${HASH_GIT} | grep ${HASH_GIT} | awk '{ print \$2 }'", returnStdout: true)
       }
       echo "RAMA_GIT: ${RAMA_GIT}"
 
