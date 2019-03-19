@@ -46,11 +46,11 @@ node{
       echo "HASH_GIT: ${HASH_GIT}"
 
       script {
-            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT} | head -n 1 | awk '{ print \$2 }'", returnStdout: true)
+            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT} | head -n 1 | awk '{ print \$2 }'", returnStdout: true).trim()
       }
       echo "RAMA_GIT: ${RAMA_GIT}"
 
-      if(RAMA_GIT.equals("WEB_BUILD") ){
+      if(RAMA_GIT == "WEB_BUILD" ){
         echo "RAMA_GIT procesando WEB_BUILD... "
       }else{
         echo "no es RAMA_GIT WEB_BUILD... "
