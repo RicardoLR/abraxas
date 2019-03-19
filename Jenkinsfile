@@ -69,13 +69,13 @@ node{
     def command = '''
       git log --pretty=oneline \${HASH_GIT}
     '''  
-    sh "echo ${command}"
+      echo "command: ${command}"
 
 
     def command2 = '''
       git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT}
     '''
-    sh "echo ${command2}"
+      echo "command2: ${command2}"
 
 
       echo "RAMA_GIT: ${RAMA_GIT}"
