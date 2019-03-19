@@ -5,6 +5,7 @@ node{
     env.GIT_TAG_MESSAGE = gitTagMessage()
 
     RAMA_CUSTOM = 'initial_value'
+    RAMA_GIT = 'initial_value'
     HASH_GIT = 'initial_value'
 
     stage('HelloWorld') {
@@ -40,13 +41,18 @@ node{
 
       script {
             HASH_GIT = sh (script: "git rev-parse HEAD", returnStdout: true)
-            RAMA_CUSTOM = sh (script: "git log --pretty=oneline \$HASH_GIT | grep \$HASH_GIT | awk '{ print \$2 }'", returnStdout: true)
       }
-      echo "RAMA_CUSTOM: ${RAMA_CUSTOM}"
-      if(RAMA_CUSTOM == 'WEB_BUILD'){
-        echo "RAMA_CUSTOM procesando WEB_BUILD... "
+      echo "HASH_GIT: ${HASH_GIT}"
+
+      script {
+            RAMA_GIT = sh (script: "git log --pretty=oneline \$HASH_GIT | grep \$HASH_GIT | awk '{ print \$2 }'", returnStdout: true)
+      }
+
+      echo "RAMA_GIT: ${RAMA_GIT}"
+      if(RAMA_GIT == 'WEB_BUILD'){
+        echo "RAMA_GIT procesando WEB_BUILD... "
       }else{
-        echo "no es RAMA_CUSTOM WEB_BUILD... "
+        echo "no es RAMA_GIT WEB_BUILD... "
       }
 
       
