@@ -1,5 +1,6 @@
 node{
 
+
     git url: 'https://github.com/jenkinsci/git-tag-message-plugin'
     env.GIT_TAG_NAME = gitTagName()
     env.GIT_TAG_MESSAGE = gitTagMessage()
@@ -53,13 +54,20 @@ node{
       }
       echo "RAMA_GIT: ${RAMA_GIT}"
 
+
       if(RAMA_GIT == "WEB_BUILD" ){
         echo "RAMA_GIT procesando WEB_BUILD... "
       }else{
         echo "no es RAMA_GIT WEB_BUILD... "
       }
 
+    
       
+      if(RAMA_GIT == "PR_WEB" ){
+        echo "RAMA_GIT procesando PR_WEB... "
+      }else{
+        echo "no es RAMA_GIT PR_WEB... "
+      }
 
  
 
