@@ -61,7 +61,6 @@ node{
         echo "no es RAMA_GIT WEB_BUILD... "
       }
 
-    
       
       if(RAMA_GIT == "PR_WEB" ){
         echo "RAMA_GIT procesando PR_WEB... "
