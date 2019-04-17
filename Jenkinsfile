@@ -1,5 +1,6 @@
 node{
 
+
     git url: 'https://github.com/jenkinsci/git-tag-message-plugin'
     env.GIT_TAG_NAME = gitTagName()
     env.GIT_TAG_MESSAGE = gitTagMessage()
@@ -35,6 +36,7 @@ node{
       echo "============================================================"
 
 
+      // Procoeso con un archivo de text
       script {
             RAMA_CUSTOM = sh (script: "cat ./ambiente/ambiente.txt", returnStdout: true)
       }
@@ -46,29 +48,33 @@ node{
       }
 
 
+      // Procoeso de un commit
+
       script {
             HASH_GIT = sh (script: "git rev-parse HEAD", returnStdout: true)
       }
       echo "HASH_GIT: ${HASH_GIT}"
 
-      def command = '''
-        git log --pretty=oneline \${HASH_GIT}
-      '''  
-      sh "echo ${command}"
-
-
-      def command2 = '''
-        git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT}
-      '''
-      sh "echo ${command2}"
-
-
+      script {
+            RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT} | head -n 1 | awk '{ print \$2 }'", returnStdout: true).trim()
+      }
       echo "RAMA_GIT: ${RAMA_GIT}"
-      if(RAMA_GIT == 'WEB_BUILD'){
+
+
+      if(RAMA_GIT == "WEB_BUILD" ){
         echo "RAMA_GIT procesando WEB_BUILD... "
       }else{
         echo "no es RAMA_GIT WEB_BUILD... "
       }
+
+      
+      if(RAMA_GIT == "PR_WEB" ){
+        echo "RAMA_GIT procesando PR_WEB... "
+      }else{
+        echo "no es RAMA_GIT PR_WEB... "
+      }
+
+ 
 
       sh 'docker -v'
       sh 'printenv'
