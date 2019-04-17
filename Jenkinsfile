@@ -9,6 +9,12 @@ node{
     RAMA_GIT2 = 'initial_value'
     HASH_GIT = 'initial_value'
 
+
+    project = 'bright-eon-226701'
+    appName = 'abraxas'
+    branchMap = [build: 'qa', master: 'prod'] 
+    imageTag = "gcr.io/${project}/${appName}:${branchMap[env.BRANCH_NAME]?:env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+
     stage('HelloWorld') {
       checkout scm
     }
@@ -45,37 +51,16 @@ node{
       }
       echo "HASH_GIT: ${HASH_GIT}"
 
-      // script {
-      //       RAMA_GIT = sh (script: "git log --pretty=oneline \${HASH_GIT}", returnStdout: true)
-      // }
-      // echo "RAMA_GIT: ${RAMA_GIT}"
-
-      // script {
-      //       RAMA_GIT2 = sh (script: "\${RAMA_GIT} | grep \${HASH_GIT}", returnStdout: true)
-      // }
-      // echo "RAMA_GIT2: ${RAMA_GIT2}"
+      def command = '''
+        git log --pretty=oneline \${HASH_GIT}
+      '''  
+      sh "echo ${command}"
 
 
-      // script {
-      //       RAMA_GIT = sh (script: "\${RAMA_GIT} | awk '{ print \$2 }'", returnStdout: true)
-      // }
-      // echo "RAMA_GIT: ${RAMA_GIT}"
-
-      // sh "RAMA_GIT=git log --pretty=oneline \${HASH_GIT}"
-      // sh "RAMA_GIT=grep \${HASH_GIT}"
-      // sh "RAMA_GIT=awk '{ print \$2 }'"
-      // sh "RAMA_GIT=\$(git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT} | awk '{ print \$2 }')"
-
-    def command = '''
-      git log --pretty=oneline \${HASH_GIT}
-    '''  
-    sh "echo ${command}"
-
-
-    def command2 = '''
-      git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT}
-    '''
-    sh "echo ${command2}"
+      def command2 = '''
+        git log --pretty=oneline \${HASH_GIT} | grep \${HASH_GIT}
+      '''
+      sh "echo ${command2}"
 
 
       echo "RAMA_GIT: ${RAMA_GIT}"
@@ -85,10 +70,6 @@ node{
         echo "no es RAMA_GIT WEB_BUILD... "
       }
 
-      
-
- 
-
       sh 'docker -v'
       sh 'printenv'
     }
@@ -96,6 +77,13 @@ node{
       if(env.BRANCH_NAME == 'master'){
         sh 'docker build --no-cache -t richi/abraxas .'
         sh 'docker run -e APP=Abraxas -e PORT=8081 -e BACKEND_SERVER=http://localhost:8081 -e NODE_ENV=production -it -p 8081:8081 -d richi/abraxas'
+      }
+
+      if(env.BRANCH_NAME == 'build'){
+        sh """
+          docker build -t ${imageTag} .
+          gcloud docker -- push ${imageTag}
+        """
       }
     }
 }
